@@ -1,22 +1,23 @@
-// For Hardhat 
-const contract = require("../artifacts/contracts/HelloWorld.sol/HelloWorld.json");
+/*
+    This file is just a basic example of how to interact with an already deployed contract.
+*/
 
-const API_KEY = process.env.API_KEY;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
+const { abi } = require('../artifacts/contracts/HelloWorld.sol/HelloWorld.json')
+const { signer, provider } = require('../config')
+const { ethers } = require('hardhat')
+const getBalance = require('../helpers/getBalance')
 
-// Provider
-const alchemyProvider = new ethers.providers.AlchemyProvider(network="goerli", API_KEY);
+const CONTRACT_ADDRESS = '0x4EE92526865462207133B1c35D7E10df116DC6a9'
 
-// Signer
-const signer = new ethers.Wallet(PRIVATE_KEY, alchemyProvider);
-
-// Contract
-const helloWorldContract = new ethers.Contract(CONTRACT_ADDRESS, contract.abi, signer);
-
-async function main() {
-    const message = await helloWorldContract.message();
-    console.log("The message is: " + message);
+async function interact() {
+    const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        abi,
+        signer,
+    )
+    const message = await contract.message()
+    const balance = await getBalance(CONTRACT_ADDRESS)
+    console.log(`The message is ${message} and the balance in ether is ${balance}`)
 }
 
-main();
+interact()

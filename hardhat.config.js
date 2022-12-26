@@ -1,16 +1,16 @@
-require('dotenv').config();
-require("@nomiclabs/hardhat-ethers");
+require('dotenv').config()
+require('@nomiclabs/hardhat-ethers')
 
-const { API_URL, PRIVATE_KEY } = process.env;
+const { API_URL, PRIVATE_KEY, NETWORK, SOLIDITY_VERSION } = process.env
 
 module.exports = {
-   solidity: "0.8.10",
-   defaultNetwork: "goerli",
-   networks: {
-      hardhat: {},
-      goerli: {
-         url: API_URL,
-         accounts: [`0x${PRIVATE_KEY}`]
-      }
-   },
+    solidity: SOLIDITY_VERSION,
+    defaultNetwork: NETWORK,
+    networks: {
+        hardhat: {},
+        [NETWORK]: {
+            url: API_URL,
+            accounts: [`0x${PRIVATE_KEY}`],
+        },
+    },
 }
