@@ -1,4 +1,5 @@
 # alchemy-hardhat-example
+A template/example of how to use hardhat with alchemy as a provider for deployment and interaction with a solidity smart contract.
 
 ## Requirements
 - [Alchemy account](https://www.alchemy.com/)
