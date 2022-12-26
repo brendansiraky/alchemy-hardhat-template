@@ -3,7 +3,7 @@
 */
 
 const { abi } = require('../artifacts/contracts/HelloWorld.sol/HelloWorld.json')
-const { signer, provider } = require('../config')
+const { signer } = require('../config')
 const { ethers } = require('hardhat')
 const getBalance = require('../helpers/getBalance')
 

@@ -28,7 +28,7 @@ async function deploy() {
         const date = getFormattedDate()
         log(
             `deployments/${date}-${contractName}`,
-            `Contract address is: ${deployedContract.address}`
+            `${contractName} Contract was deployed with the address: ${deployedContract.address}`
         )
     } catch (error) {
         console.error(
