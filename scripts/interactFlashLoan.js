@@ -10,10 +10,7 @@ const USDC_ADDRESS = '0xA2025B15a1757311bfD68cb14eaeFCc237AF5b43'
 
 async function interact() {
     const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer)
-    const result = await contract.requestFlashLoan(
-        USDC_ADDRESS,
-        160000
-    )
+    const result = await contract.requestFlashLoan(USDC_ADDRESS, 160000)
 
     // const date = getFormattedDate()
     // log(
@@ -35,13 +32,14 @@ async function getTransaction(hash) {
             JSON.stringify(response, null, 2),
             'json'
         )
-
     } catch (error) {
         console.error(error)
     }
 }
 
-getTransaction('0x4fe203c300626301054d6d1aca0b7268584e7f33518cd73c19de4724a8bcb2d5')
+getTransaction(
+    '0x4fe203c300626301054d6d1aca0b7268584e7f33518cd73c19de4724a8bcb2d5'
+)
 
 // const CronJob = require('cron').CronJob
 

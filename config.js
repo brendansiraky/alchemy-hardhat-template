@@ -2,16 +2,16 @@ require('dotenv').config()
 const { ethers } = require('hardhat')
 const CHAIN_IDS = require('./constants/CHAIN_IDS')
 
-const { 
-    MAINNET_API_URL, 
+const {
+    MAINNET_API_URL,
     MAINNET_API_KEY,
-    
+
     GOERLI_API_URL,
     GOERLI_API_KEY,
 
-    NETWORK, 
-    SOLIDITY_VERSION, 
-    PRIVATE_KEY 
+    NETWORK,
+    SOLIDITY_VERSION,
+    PRIVATE_KEY,
 } = process.env
 
 const API_KEY = NETWORK === 'mainnet' ? MAINNET_API_KEY : GOERLI_API_KEY
