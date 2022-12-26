@@ -2,9 +2,9 @@
     This file is just a basic example of how to interact with an already deployed contract.
 */
 
+const { ethers } = require('hardhat')
 const { abi } = require('../artifacts/contracts/HelloWorld.sol/HelloWorld.json')
 const { signer } = require('../config')
-const { ethers } = require('hardhat')
 const getBalance = require('../helpers/getBalance')
 
 const CONTRACT_ADDRESS = '0x4EE92526865462207133B1c35D7E10df116DC6a9'

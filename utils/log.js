@@ -1,7 +1,7 @@
 const fs = require('fs')
 
-function log(name, text) {
-    fs.writeFile(`logs/${name}.txt`, text, function (err) {
+function log(name, value, type = 'txt') {
+    fs.writeFile(`logs/${name}.${type}`, value, function (err) {
         if (err) {
             return console.log(err)
         }
