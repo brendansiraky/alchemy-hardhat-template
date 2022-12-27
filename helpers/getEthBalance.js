@@ -10,6 +10,7 @@ async function getEthBalance(address) {
     try {
         const unformattedBalance = await provider.getBalance(queryAddress, 'latest')
         const formattedBalance = Utils.formatEther(unformattedBalance)
+        console.log(`Eth balance is: ${formattedBalance}`)
         return formattedBalance
     } catch (error) {
         console.log(`Error from getBalance with: ${error}`)
