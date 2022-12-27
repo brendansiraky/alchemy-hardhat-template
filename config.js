@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { ethers } = require('hardhat')
+const { Alchemy } = require('alchemy-sdk')
 const CHAIN_IDS = require('./constants/CHAIN_IDS')
 
 const {
@@ -25,13 +26,19 @@ const config = {
     PRIVATE_KEY,
 }
 
-const provider = new ethers.providers.AlchemyProvider(NETWORK, API_KEY)
+const alchemyConfig = {
+    apiKey: API_KEY,
+    network: `eth-${NETWORK}`,
+}
 
+const provider = new ethers.providers.AlchemyProvider(NETWORK, API_KEY)
 const signer = new ethers.Wallet(PRIVATE_KEY, provider)
+const alchemyCore = new Alchemy(alchemyConfig).core
 
 module.exports = {
     config,
     provider,
     signer,
     ethers,
+    alchemyCore,
 }
